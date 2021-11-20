@@ -7,10 +7,10 @@ const VehicleCard = (props) => {
   return(
     <div className="vehicle-card">
      <img src={photo} alt="vehicle" />
-      <div>
-        <p>{make}</p>
-        <p>{model}</p>
-        <p>{price}</p>
+      <div className="vehicle-card-content">
+        <p>Make: {make}</p>
+        <p>Model: {model}</p>
+        <p>Price: {price}</p>
         <p>{range.distance}</p>
       </div>
     </div>
