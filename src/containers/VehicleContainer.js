@@ -24,9 +24,13 @@ class VehicleContainer extends React.Component {
 
   sortedVehicles  = () => {
     if (this.state.sortBy === 'Range ASC') {
-      return this.state.vehicles.sort((a, b) => this.sortAscending(a.range.distance, b.range.distance ))
+      return this.state.vehicles.sort((a, b) => this.sortAscending(a.range.distance, b.range.distance))
     } else if (this.state.sortBy === 'Range DESC') {
       return this.state.vehicles.sort((a, b) => this.sortDescending(a.range.distance, b.range.distance))
+    } else if (this.state.sortBy === 'Price ASC') {
+      return this.state.vehicles.sort((a, b) => this.sortAscending(parseInt(a.price.split(" ")[0]), parseInt(b.price.split(" ")[0])))
+    } else if (this.state.sortBy === 'Price DESC') {
+      return this.state.vehicles.sort((a, b) => this.sortDescending(parseInt(a.price.split(" ")[0]), parseInt(b.price.split(" ")[0])))
     } else {
       return this.state.vehicles
     }
@@ -58,12 +62,9 @@ class VehicleContainer extends React.Component {
     return vehicles.map((vehicle) => {
       return <VehicleCard key={vehicle.id} vehicle={vehicle}/>
     }) 
-    
-    // return <div className="image-list">{vehicles}</div>
   }
 
   handleSortByChange = (selectedOption) => {
-    console.log('change', selectedOption)
     this.setState({ sortBy: selectedOption.value })
   }
 
@@ -74,10 +75,12 @@ class VehicleContainer extends React.Component {
           onChange={this.handleSortByChange}
           value={this.state.sortBy}
         />
-        {this.state.loading || this.state.vehicles.length === 0 ?
-          <div>Loading...</div> :
-          this.renderVehicleList()
-        }
+        <div className="image-list">
+          {this.state.loading || this.state.vehicles.length === 0 ?
+            <div>Loading...</div> :
+            this.renderVehicleList()
+          }
+        </div>
       </div>
     )
   }
