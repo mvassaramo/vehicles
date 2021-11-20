@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# Areas to work on:
+
+- Add filter functionality for price
+- Add component for the modal 
+- Fix/ improve css
+- Add tests for API call and rendering components
+- Refactor
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
