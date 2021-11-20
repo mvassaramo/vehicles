@@ -23,16 +23,18 @@ class VehicleContainer extends React.Component {
   }
 
   sortedVehicles  = () => {
-    if (this.state.sortBy === 'Range ASC') {
-      return this.state.vehicles.sort((a, b) => this.sortAscending(a.range.distance, b.range.distance))
-    } else if (this.state.sortBy === 'Range DESC') {
-      return this.state.vehicles.sort((a, b) => this.sortDescending(a.range.distance, b.range.distance))
-    } else if (this.state.sortBy === 'Price ASC') {
-      return this.state.vehicles.sort((a, b) => this.sortAscending(this.getPrice(a), this.getPrice(b)))
-    } else if (this.state.sortBy === 'Price DESC') {
-      return this.state.vehicles.sort((a, b) => this.sortDescending(this.getPrice(a), this.getPrice(a)))
+    const { sortBy, vehicles } = this.state
+
+    if (sortBy === 'Range ASC') {
+      return vehicles.sort((a, b) => this.sortAscending(a.range.distance, b.range.distance))
+    } else if (sortBy === 'Range DESC') {
+      return vehicles.sort((a, b) => this.sortDescending(a.range.distance, b.range.distance))
+    } else if (sortBy === 'Price ASC') {
+      return vehicles.sort((a, b) => this.sortAscending(this.getPrice(a), this.getPrice(b)))
+    } else if (sortBy === 'Price DESC') {
+      return vehicles.sort((a, b) => this.sortDescending(this.getPrice(a), this.getPrice(b)))
     } else {
-      return this.state.vehicles
+      return vehicles
     }
   }
 
