@@ -9,14 +9,11 @@ const DropdownFilter = props => {
     { label: 'Range Ascending', value: 'Range ASC' }
   ]
 
-  const defaultValue = options.filter(option => option.value === props.value)[0]
-
   return (
     <Select
       options={options}
       onChange={props.onChange}
       value={props.selected}
-      defaultValue={defaultValue}
     />
   )
 }

@@ -3,7 +3,7 @@ import './VehicleContainer.css';
 import VehicleCard from '../../components/VehicleCard/VehicleCard';
 import DropdownFilter from '../../components/DropdownFilter/DropdownFilter';
 import Modal from '../../components/Modal/Modal';
-import fetchVehicles from "../../apis/vehicles";
+import { fetchVehicles } from "../../apis/vehicles";
 
 class VehicleContainer extends React.Component {
   state = {
@@ -87,6 +87,7 @@ class VehicleContainer extends React.Component {
       return <div>Loading...</div>
     } return (
         <>
+          <h1>All Vehicles</h1>
           <DropdownFilter
             onChange={this.handleSortByChange}
             value={this.state.sortBy}

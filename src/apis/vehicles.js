@@ -1,4 +1,4 @@
-export default async function fetchVehicles () {
+async function fetchVehicles () {
   const url = 'https://6157228e8f7ea600179850e4.mockapi.io/api/vehicles'
 
     try {
@@ -13,3 +13,5 @@ export default async function fetchVehicles () {
       return null
     }
 }
+
+export { fetchVehicles };

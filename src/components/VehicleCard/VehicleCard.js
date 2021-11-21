@@ -7,8 +7,8 @@ const VehicleCard = props => {
   return (
     <div className="vehicle-card" onClick={() => props.displayModal(props.vehicle)}>
         <img className="vehicle-card-img" src={photo} alt="vehicle" />
-      <div className="vehicle-card-content">
-        <p>Make: {make}</p>
+      <div className="vehicle-card-content" data-testid="vehicleCard">
+        <p >Make: {make}</p>
         <p>Model: {model}</p>
         <p>Price: {price}</p>
         <p>Range: {range.distance} {range.unit}</p>
