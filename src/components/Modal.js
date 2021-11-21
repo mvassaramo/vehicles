@@ -2,15 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const Modal = (props) => {
+  const { make, model, price, colors, range } = props.vehicle
+
   return ReactDOM.createPortal(
     <div onClick={props.onDismiss} className="ui dimmer modals visible active">
       <div onClick={(e) => e.stopPropagation() } className="ui standard modal visible active">
         <i onClick={props.onDismiss} className="close icon"></i>
-        <div className="header">{props.vehicle.make} - {props.vehicle.model}</div>
+        <div className="header">{make} - {model}</div>
         <div className="content">
-          <p>Price: {props.vehicle.price}</p>
-          <p>Colours available: {props.vehicle.colors.join(", ")}</p>
-          <p>Range: {props.vehicle.range.distance} {props.vehicle.range.unit}</p>
+          <p>Price: {price}</p>
+          <p>Colours available: {colors.join(", ")}</p>
+          <p>Range: {range.distance} {range.unit}</p>
         </div>
       </div>
     </div>,
