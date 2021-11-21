@@ -1,5 +1,5 @@
 import './App.css';
-import VehicleContainer from './containers/VehicleContainer';
+import VehicleContainer from './containers/VehicleContainer/VehicleContainer';
 
 function App() {
   return (

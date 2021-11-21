@@ -1,0 +1,14 @@
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(2, 3fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 50px;
+  padding-top: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+  .image-list {
+    grid-template-columns: repeat(1, 3fr);
+    grid-template-rows: repeat(4, auto);
+  }
+}
