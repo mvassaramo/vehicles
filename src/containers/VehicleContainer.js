@@ -84,9 +84,6 @@ class VehicleContainer extends React.Component {
   }
 
   render() {
-    const body = document.querySelector('body');
-    body.style.overflow = this.state.showModal ? 'hidden' : 'auto';
-
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
         <DropdownFilter
