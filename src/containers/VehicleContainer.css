@@ -1,6 +1,0 @@
-.image-list {
-  display: grid;
-  grid-template-columns: repeat(2, 3fr);
-  grid-template-rows: repeat(2, 20vw);
-  grid-gap: 150px;
-}
