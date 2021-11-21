@@ -1,13 +1,16 @@
 import React from "react";
 import './VehicleContainer.css';
 import VehicleCard from '../components/VehicleCard';
-import DropdownFilter from '../components/DropdownFilter'
+import DropdownFilter from '../components/DropdownFilter';
+import Modal from '../components/Modal';
 
 class VehicleContainer extends React.Component {
   state = {
     vehicles: [],
     loading: true,
     sortBy: undefined,
+    showModal: false,
+    selectedVehicle: null
   }
 
   async componentDidMount() {
@@ -66,12 +69,29 @@ class VehicleContainer extends React.Component {
     const vehicles = this.state.sortBy ? this.sortedVehicles() : this.state.vehicles
 
     return vehicles.map((vehicle) => {
-      return <VehicleCard key={vehicle.id} vehicle={vehicle}/>
+      return (
+        <VehicleCard
+          key={vehicle.id}
+          vehicle={vehicle}
+          displayModal={this.displayModal}
+        />
+      )
     }) 
   }
 
   handleSortByChange = (selectedOption) => {
     this.setState({ sortBy: selectedOption.value })
+  }
+
+  hideModal = () => {
+    this.setState({ showModal: false, selectedVehicle: null })
+  }
+
+  displayModal = (vehicle) => {
+    this.setState({
+        showModal: true,
+        selectedVehicle: vehicle
+    })
   }
 
   render() {
@@ -81,12 +101,14 @@ class VehicleContainer extends React.Component {
           onChange={this.handleSortByChange}
           value={this.state.sortBy}
         />
+        <hr />
         <div className="image-list">
           {this.state.loading || this.state.vehicles.length === 0 ?
             <div>Loading...</div> :
             this.renderVehicleList()
           }
         </div>
+        {this.state.showModal ? <Modal vehicle={this.state.selectedVehicle} onDismiss={this.hideModal} /> : null }
       </div>
     )
   }
