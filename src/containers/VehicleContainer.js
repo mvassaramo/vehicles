@@ -41,9 +41,7 @@ class VehicleContainer extends React.Component {
     }
   }
 
-  getPrice = (vehicle) => {
-    return parseInt(vehicle.price.split(" ")[0])
-  }
+  getPrice = (vehicle) => parseInt(vehicle.price.split(" ")[0])
 
   sortAscending =  (a, b ) => {
     if ( a < b ) {
@@ -65,6 +63,12 @@ class VehicleContainer extends React.Component {
     return 0;
   }
 
+  handleSortByChange = (selectedOption) => this.setState({ sortBy: selectedOption.value })
+
+  hideModal = () => this.setState({ showModal: false, selectedVehicle: null })
+
+  displayModal = (vehicle) => this.setState({ showModal: true, selectedVehicle: vehicle })
+
   renderVehicleList = () => {
     const vehicles = this.state.sortBy ? this.sortedVehicles() : this.state.vehicles
 
@@ -79,29 +83,16 @@ class VehicleContainer extends React.Component {
     }) 
   }
 
-  handleSortByChange = (selectedOption) => {
-    this.setState({ sortBy: selectedOption.value })
-  }
-
-  hideModal = () => {
-    this.setState({ showModal: false, selectedVehicle: null })
-  }
-
-  displayModal = (vehicle) => {
-    this.setState({
-        showModal: true,
-        selectedVehicle: vehicle
-    })
-  }
-
   render() {
+    const body = document.querySelector('body');
+    body.style.overflow = this.state.showModal ? 'hidden' : 'auto';
+
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
         <DropdownFilter
           onChange={this.handleSortByChange}
           value={this.state.sortBy}
         />
-        <hr />
         <div className="image-list">
           {this.state.loading || this.state.vehicles.length === 0 ?
             <div>Loading...</div> :
